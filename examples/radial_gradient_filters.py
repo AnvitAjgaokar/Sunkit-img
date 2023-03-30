@@ -35,14 +35,14 @@ radial_bin_edges = equally_spaced_bins()
 radial_bin_edges *= u.R_sun
 
 # The NRGF filter is applied after it.
-out1 = radial.nrgf(aia_map, radial_bin_edges)
+out11 = radial.nrgf(aia_map, radial_bin_edges)
 
 # The NRGF filtered map is plotted.
 # The image seems a little washed out so you may need to change some plotting settings
 # for a clearer output.
 fig = plt.figure()
 ax = plt.subplot(projection=out1)
-out1.plot()
+out11.plot()
 
 ###########################################################################
 # We will need to work out  a few parameters for the FNRGF.
@@ -53,12 +53,12 @@ order = 20
 attenuation_coefficients = radial.set_attenuation_coefficients(order)
 
 # The FNRGF filter is applied after it.
-out2 = radial.fnrgf(aia_map, radial_bin_edges, order, attenuation_coefficients)
+out22 = radial.fnrgf(aia_map, radial_bin_edges, order, attenuation_coefficients)
 
 # The FNRGF filtered map is plotted.
 fig = plt.figure()
 ax = plt.subplot(projection=out2)
-out2.plot()
+out22.plot()
 
 # All the figures are plotted.
 plt.show()
